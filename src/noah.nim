@@ -1,3 +1,9 @@
-import noah / [ webcontext, staticfiles, beastcontext, asynccontext]
+import noah / [ webcontext, staticfiles, asynccontext]
 
-export webcontext, staticfiles, beastcontext, asynccontext
+export webcontext, staticfiles, asynccontext
+
+when defined(linux):
+  import beastcontext
+  export beastcontext
+
+
