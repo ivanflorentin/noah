@@ -38,3 +38,16 @@ proc createWebContext*(r: Request): WebContext =
   
   result.request = req
   result.response = res
+
+  
+proc toString*(h: HttpHeaders): string =
+  result = ""
+  if h.len > 0:
+    for key, val in h.pairs:
+      echo key, ": ",  val
+      var values = ""
+      if val.len > 0:
+        for v in val:
+          values.add(v & ",")
+        values.delete(values.len - 1, values.len)
+      result.add(key & ": " & val & "\n")
